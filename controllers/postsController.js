@@ -18,7 +18,16 @@ function update(req, res){
 }
 
 function destroy(req, res){
-  res.send("Eliminazione di un post");
+  const foundPost = posts.find((post) => post.id === Number(req.params.id));
+
+  /* console.log(foundPost); */
+
+  /* console.log(posts.indexOf(foundPost)); */
+  posts.splice(posts.indexOf(foundPost), 1);
+
+  console.log(posts);
+  /* console.log(foundPost); */
+  res.sendStatus(204);
 }
 
 module.exports = {
