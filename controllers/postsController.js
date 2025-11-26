@@ -5,7 +5,8 @@ function index(req, res){
 }
 
 function show(req, res){
-  res.send("Singolo post");
+  res.json(posts.find((post) => Number(req.params.id) === post.id
+  ));
 }
 
 function store(req, res){
