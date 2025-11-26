@@ -1,7 +1,7 @@
-const posts = require ("../routers/posts");
+const posts = require ("../data/blogData");
 
 function index(req, res){
-  res.send("Lista dei post");
+  res.json(posts);
 }
 
 function show(req, res){
