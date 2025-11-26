@@ -47,10 +47,10 @@ const posts = [
 const express = require ("express");
 const router = express.Router();
 
+const postsController = require("../controllers/postsController");
+
 // index
-router.get("/", (req, res) => {
-  res.send("Lista dei post");
-});
+router.get("/", postsController.index);
 
 // show
 router.get("/:id", (req, res) => {
