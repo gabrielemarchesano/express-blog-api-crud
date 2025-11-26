@@ -53,24 +53,17 @@ const postsController = require("../controllers/postsController");
 router.get("/", postsController.index);
 
 // show
-router.get("/:id", (req, res) => {
-  res.send("Singolo post");
-});
+router.get("/:id", postsController.show);
 
 // store
-router.post("/", (req, res) => {
-  res.send("Creazione di un nuovo post");
-});
+router.post("/", postsController.store);
 
 // update
-router.put("/:id", (req, res) => {
-  res.send("Modifica di un post");
-});
+router.put("/:id", postsController.update);
 
 // destroy
-router.delete("/:id", (req, res) => {
-  res.send("Eliminazione di un post");
-});
+router.delete("/:id", postsController.destroy);
+
 
 module.exports = posts;
 module.exports = router;
