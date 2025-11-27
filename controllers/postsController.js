@@ -12,6 +12,12 @@ function show(req, res){
 function store(req, res){
   res.send("Creazione post");
   console.log(req.body);
+
+  const newPost = req.body;
+  /* console.log(newPost); */
+
+  posts.push(newPost);
+  console.log(posts);
 }
 
 function update(req, res){
