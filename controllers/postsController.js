@@ -1,13 +1,22 @@
 const posts = require ("../data/blogData");
-const { post } = require("../routers/posts");
 
 function index(req, res){
   res.json(posts);
 }
 
 function show(req, res){
-  res.json(posts.find((post) => Number(req.params.id) === post.id
-  ));
+  const foundPost = posts.find((post) => Number(req.params.id) === post.id);
+  
+  if(!foundPost){
+    res.status(404);
+
+    return res.json({
+      error: "Not found",
+      message: `The post with id ${req.params.id} not found`
+    })
+  }
+
+  res.json(foundPost);
 }
 
 function store(req, res){
