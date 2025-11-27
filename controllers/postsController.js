@@ -1,4 +1,5 @@
 const posts = require ("../data/blogData");
+const { post } = require("../routers/posts");
 
 function index(req, res){
   res.json(posts);
@@ -21,7 +22,17 @@ function store(req, res){
 }
 
 function update(req, res){
-  res.send("Modifica di un post");
+  /* res.send("Modifica di un post"); */
+  const id = Number(req.params.id);
+  const foundPost = posts.find((post) => post.id === id);
+
+  foundPost.title = req.body.title;
+  foundPost.content = req.body.content;
+  foundPost.image = req.body.image;
+  foundPost.tags = req.body.tags;
+
+  console.log(posts);
+  res.json(foundPost);
 }
 
 function destroy(req, res){
