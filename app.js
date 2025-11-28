@@ -4,6 +4,7 @@ const PORT = 3000;
 
 const postsRouter = require("./routers/posts");
 const notFound = require("./middlewares/notFound");
+const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.static("public"));
 
@@ -20,4 +21,5 @@ app.get("/", (req, res) => {
   res.send("Blog routing");
 })
 
+app.use(errorHandler);
 app.use(notFound);
