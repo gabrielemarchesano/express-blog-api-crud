@@ -1,8 +1,9 @@
-const express = require ("express");
+const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const postsRouter = require ("./routers/posts");
+const postsRouter = require("./routers/posts");
+const notFound = require("./middlewares/notFound");
 
 app.use(express.static("public"));
 
@@ -18,3 +19,5 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.send("Blog routing");
 })
+
+app.use(notFound);
